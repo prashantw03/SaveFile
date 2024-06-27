@@ -1,0 +1,38 @@
+Download HDFS.log and save it in log_classification\Generate_Train_Test_data\
+wget https://zenodo.org/record/3227177/files/HDFS_1.tar.gz?download=1 -P $file
+tar -xvzf $zipfile
+
+Using Py3.9.7
+used pycham to create a project (can we done without pycham , creating a vene)
+
+IN the VENV
+
+Install (PyTorch stable 2.3.1 win/linux pip python cpu)
+https://pytorch.org/get-started/locally/
+
+Win- 
+--------pip3 install torch torchvision torchaudio
+Linux-
+--------pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+--------pip install transformers
+
+(A module that was compiled using NumPy 1.x cannot be run in NumPy 2.0.0 )
+--------pip install numpy<2
+
+--------pip install pandas datasets
+--------pip install accelerate
+--------pip install scikit-learn
+
+run generateTrainData.py and generateTestData.py
+
+generateTrainData.py and generateTestData.py will generate the train and test data(3 files each normal/anomaly/all) 
+Line 6/7
+start_index = 0 # Replace with your actual start line index (0-based)
+end_index = 50  # Replace with your actual end line index (0-based)
+the output will be in data dir
+
+Train.py will take in train data(all) can be changed at line no 35 Train.py file_path = "../data/train_log_data.csv"
+and output will be saved in model dir
+
+Test.py will also work same can be changed at line no 37 Test.py df = pd.read_csv('../data/test_log_data.csv')
+and the out put will be present in data dir file name: classification_results.txt
